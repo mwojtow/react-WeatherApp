@@ -8,6 +8,7 @@ const Weather = props => {
           <p>{props.country}</p>
           <p>{props.humidity}</p>
           <p>{props.description}</p>
+          <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt=""/>
       </div>
     );
 }
