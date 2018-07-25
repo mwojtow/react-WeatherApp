@@ -21,6 +21,7 @@ class App extends Component {
   }
   
   getWeather = async (e) => {
+    
     e.preventDefault();
 
     const city = e.target.city.value;
