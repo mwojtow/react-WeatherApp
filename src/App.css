@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 50px;
@@ -18,11 +13,16 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.form__container {
+  margin-top: 50px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.weather__container {
+  width: 340px;
+  margin: 30px auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  color: #4a4a4a;
+  max-width: 100%;
+  position: relative;
+  background-color: rgb(234, 235, 237);
 }

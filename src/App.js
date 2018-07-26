@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      temperature: undefined,
+      temperature: "",
       city: undefined,
       country: undefined,
       humidity: undefined,
@@ -28,9 +28,12 @@ class App extends Component {
     const api_call = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
     );
+    // const api_call = await fetch(
+    //   `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}&units=metric&cnt=16`
+    // );
 
     const data = await api_call.json();
-
+    console.log(data);
     if (city && country) {
       this.setState({
         temperature: data.main.temp,
@@ -58,7 +61,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">weather app</h1>
+          <h1 className="App-title">React Weather App</h1>
         </header>
         <Form getWeather={this.getWeather} />
         <Weather
