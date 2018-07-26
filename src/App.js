@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import Form from './components/Form';
-import Weather from './components/Weather';
+import React, { Component } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import Weather from "./components/Weather";
 
-const API_KEY = '64bd459b55ce780015ef29df99092a33';
+const API_KEY = "64bd459b55ce780015ef29df99092a33";
 
 class App extends Component {
-
-  constructor(){
+  constructor() {
     super();
     this.state = {
       temperature: undefined,
@@ -17,20 +16,21 @@ class App extends Component {
       description: undefined,
       icon: undefined,
       error: undefined
-    }
+    };
   }
-  
-  getWeather = async (e) => {
-    
+
+  getWeather = async e => {
     e.preventDefault();
 
     const city = e.target.city.value;
     const country = e.target.country.value;
 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+    const api_call = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
+    );
 
     const data = await api_call.json();
-    
+
     if (city && country) {
       this.setState({
         temperature: data.main.temp,
@@ -39,8 +39,8 @@ class App extends Component {
         humidity: data.main.humidity,
         description: data.weather[0].description,
         icon: data.weather[0].icon,
-        error: ''
-       });
+        error: ""
+      });
     } else {
       this.setState({
         temperature: undefined,
@@ -49,11 +49,10 @@ class App extends Component {
         humidity: undefined,
         description: undefined,
         icon: undefined,
-        error: 'fill the fields',
-      })
+        error: "fill the fields"
+      });
     }
-
-  }
+  };
 
   render() {
     return (
@@ -61,14 +60,14 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">weather app</h1>
         </header>
-        <Form getWeather={this.getWeather}/>
-        <Weather 
-        temperature={this.state.temperature} 
-        city={this.state.city} 
-        country={this.state.country}
-        humidity={this.state.humidity}
-        description={this.state.description}
-        icon={this.state.icon}
+        <Form getWeather={this.getWeather} />
+        <Weather
+          temperature={this.state.temperature}
+          city={this.state.city}
+          country={this.state.country}
+          humidity={this.state.humidity}
+          description={this.state.description}
+          icon={this.state.icon}
         />
       </div>
     );
